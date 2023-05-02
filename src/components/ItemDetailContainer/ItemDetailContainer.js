@@ -11,7 +11,7 @@ const ItemDetailContainer = () => {
     const {itemId} = useParams()
 
     useEffect(() => {
-        getProductById(itemId)
+        getProductsById(itemId)
             .then(response => {
                  setProduct(response)   
             })
@@ -22,7 +22,7 @@ const ItemDetailContainer = () => {
 
     return(
         <div className='ItemDetailContainer' >
-            <ItemDetail {...product}/>
+            <ItemDetail {...product} />
         </div>
     )
 }

@@ -1,12 +1,12 @@
 import ItemCount from "../ItemCount/itemCount"
 
 
-const ItemDetail = ({ id, name, category, description, price, stock}) => {
+const ItemDetail = ({ id, name, img, category, description, price, stock}) => {
     return (
         <article className="CardItem">
             <header className="Header">
                 <h2 className="ItemHeader">
-                 {name}
+                    {name}
                 </h2>
             </header>
             <picture>
@@ -22,10 +22,15 @@ const ItemDetail = ({ id, name, category, description, price, stock}) => {
                 <p className="Info">  
                     Precio: ${price}
                 </p> 
+                <p className="Info">  
+                    Stock: {stock}
+                </p> 
             </section>
-            <footer className="ItemFooter">
-            <ItemCount initial={1} stock={stock} onAddd={(quantity)} => console.log('Cantidad agregada') console.log(1)>
+            <footer className='ItemFooter'>
+                <ItemCount initial={1} stock={stock} onAdd={(quantity) => console.log('Cantidad agregada ', quantity)} />
             </footer>
         </article>
     )
 }
+
+export default ItemDetail

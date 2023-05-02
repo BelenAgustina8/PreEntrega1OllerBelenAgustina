@@ -1,8 +1,8 @@
-
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContaier from './components/ItemListContainer/ItemListContainer';
-import ItemDetailContainer
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path='/' element= {<ItemListContaier />}/>
           <Route path='/category/:categoryId' element= {<ItemListContaier />}/>
-          <Route path='/item/:itemId' element= {<ItemListContaier />}/>
+          <Route path='/item/:itemId' element= {<ItemDetailContainer />}/>
           <Route path='*' element= {<h1>404 NOT FOUND</h1>}/>
         </Routes>
       </BrowserRouter>

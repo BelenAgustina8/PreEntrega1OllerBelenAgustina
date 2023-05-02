@@ -1,0 +1,24 @@
+.NavBar {
+    text-align: center;
+    font-size: 30px;
+    color: aqua;
+}
+
+h3 {font-size: 50px;
+    color:#fa8cb1}
+
+
+a {text-decoration: none}
+
+
+.Categories {
+    text-align: center;
+    font-size: 25px;
+    color:black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 0fr;
+
+
+}
+
+
