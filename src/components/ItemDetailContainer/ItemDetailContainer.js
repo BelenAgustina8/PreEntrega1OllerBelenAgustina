@@ -1,51 +1,51 @@
-import { useEffect, useState } from "react";
-import ItemDetail from "../ItemDetail/ItemDetail";
-import { useParams } from "react-router-dom";
-import { getDoc, doc } from "firebase/firestore";
-import { db } from "../../service/firebase/firebaseConfig";
+
+import { useState, useEffect } from "react";
+import ItemDetail from '../ItemDetail/ItemDetail'
+import { useParams } from 'react-router-dom';
+import { getDoc, doc } from 'firebase/firestore';
+import { db } from '../../service/firebase/firebaseConfig'
 
 const ItemDetailContainer = () => {
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
+    const [product, setProduct] = useState();
+    const [loading, setLoading] = useState(true);
 
-  const { itemId } = useParams();
+    const { itemId } = useParams();
+    
+    useEffect(() => {
+        setLoading(true);
+        
+        const docRef = doc(db, 'products', itemId);
 
-  console.log("ItemId:", itemId); 
-  useEffect(() => {
-    setLoading(true);
-
-    const docRef = doc(db, "products", itemId);
-
-    getDoc(docRef)
-      .then((response) => {
-        if (response.exists) {
-          const data = response.data();
-          const productsAdapted = { id: response.id, ...data };
-          setProduct(productsAdapted);
-        } else {
-          console.log("No se encontró el documento:", itemId);
-        }
+    setTimeout(() => {
+        getDoc(docRef)
+            .then(response => {
+                const data = response.data();
+                const productsAdapted = { id: response.id, ...data };
+                setProduct(productsAdapted);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+            .finally(() => {
+                setLoading(false);
+            })
+            .finally(() => {
+        setLoading(false)
       })
-      .catch((error) => {
-        console.log("Error al obtener el documento:", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [itemId]);
+  }, 500);
+    
+    }, [itemId]);
+    console.log(product)
 
-  return (
-    <div className="ItemDetailContainer">
-    <h1>itemId: {'tst'}</h1>
-      {product ? (
-        <ItemDetail product={product} />
-      ) : loading ? (
-        <p>Loading...</p>
-      ) : (
-        <p>No se pudo cargar el producto</p>
-      )}
-    </div>
-  );
+    return (
+        <div className="ItemDetailContainer">
+            {loading ? (
+                <div className="CartDetailMsn">Cargando detalle del producto...</div>
+            ) : (
+                <ItemDetail {...product}/>
+            )}
+        </div>
+    );
 };
 
 export default ItemDetailContainer;
