@@ -6,8 +6,8 @@ import { CartContext } from "../CartContext/CartContext"
 
 const ItemDetail = ({ id, name, img, description, price, stock }) => {
     const [quantityAdded, setQuantityAdded] = useState(0)
-    console.log('Stock received in ItemDetail:', stock)
-    
+    console.log('Stock :', stock)
+    console.log('id:', id)    
     const { addItem } = useContext(CartContext);
   
     const handleOnAdd = (quantity) => {

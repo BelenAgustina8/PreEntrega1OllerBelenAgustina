@@ -40,7 +40,7 @@ const ItemDetailContainer = () => {
     return (
         <div className="ItemDetailContainer">
             {loading ? (
-                <div className="CartDetailMsn">Cargando detalle del producto...</div>
+                <div className="CartDetailMsn">Cargando el producto...</div>
             ) : (
                 <ItemDetail {...product}/>
             )}
