@@ -1,0 +1,30 @@
+.container {
+    text-align: center;
+}
+
+.carrito {
+    text-align: center;
+    padding-left: 30%;
+    background-color: #fa8cb1;
+    color: #770493;
+
+}
+
+.cate {
+    padding: 2rem;
+    color:#cde4b3
+}
+
+.cat {
+    padding: 2rem;
+}
+
+.botonEliminar {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }

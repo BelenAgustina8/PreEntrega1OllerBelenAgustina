@@ -1,0 +1,10 @@
+.description {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.CardItemDetail {
+    background-color: #fa8cb1;
+    color: #770493;
+}

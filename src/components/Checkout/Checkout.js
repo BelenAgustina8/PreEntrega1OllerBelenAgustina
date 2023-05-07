@@ -57,7 +57,7 @@ const Checkout = () => {
                 setOrderId(orderAdded.id)
                 clearCart()
             } else {
-                console.error('Hay productos fuera de srock')
+                console.error('Hay productos fuera de stock')
             }
 
         } catch (error) {
@@ -65,7 +65,6 @@ const Checkout = () => {
         } finally {
             setLoading(false)
         }
-
     }
 
 
