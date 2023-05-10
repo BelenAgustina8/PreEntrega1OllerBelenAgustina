@@ -21,7 +21,6 @@ const ItemDetailContainer = () => {
 
                 getDoc(docRef)
                     .then(response => {
-                        console.log('Raw data:', response.data());
                         const data = response.data();
                         if (data) {
                             const productsAdapted = { id: response.id, ...data };
@@ -46,7 +45,6 @@ const ItemDetailContainer = () => {
         fetchData();
 
     }, [itemId]);
-    console.log(product);
 
     return (
         <div className="ItemDetailContainer">

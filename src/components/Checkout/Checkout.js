@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { CartContext } from "../CartContext/CartContext";
 import { db } from "../../service/firebase/firebaseConfig"
-import { Timestamp, collection, getDoc, writeBatch, getDocs, query, where, addDoc, documentId } from "firebase/firestore";
+import { Timestamp, collection, getDoc, writeBatch, getDocs, query, where, addDoc, documentId, Firestore } from "firebase/firestore";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
 
@@ -34,9 +34,12 @@ const Checkout = () => {
 
             const productsRef = collection(db, 'products')
 
-            const productsAddedFromFirestore = await getDocs(query(productsRef, where(documentId(), 'in', ids)))
+            const productsAddedFromFirestore = await getDocs(query(productsRef), where(documentId(), 'in', ids));
+            
 
             const { docs } = productsAddedFromFirestore
+
+        
 
             docs.forEach(doc => {
                 const dataDoc = doc.data()
@@ -48,6 +51,7 @@ const Checkout = () => {
                 } else {
                     outOfStock.push({ id: doc.id, ... dataDoc})
                 }
+                console.log(stockDb)
             })
 
             if(outOfStock.length === 0) {

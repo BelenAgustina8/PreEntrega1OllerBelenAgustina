@@ -6,8 +6,6 @@ import './ItemDetail.css'
 
 const ItemDetail = ({ id, docId, name, img, description, price, stock }) => {
   const [quantityAdded, setQuantityAdded] = useState(0)
-  console.log('Stock :', stock)
-  console.log('id:', id)    
   const { addItem } = useContext(CartContext);
 
   const handleOnAdd = (quantity) => {

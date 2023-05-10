@@ -9,7 +9,6 @@ const Cart = () => {
     const total = cart.reduce((acc, item) => {
         return acc + item.price * item.quantity;
     }, 0);
-    console.log(total)
 
     if (totalQuantity === 0) {
       return (
